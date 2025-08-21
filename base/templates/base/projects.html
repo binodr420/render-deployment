@@ -1,0 +1,110 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title|default:"Binod Joshi" }}</title>
+  <meta name="description" content="Portfolio of Binod Joshi — GIS Analyst & Geomatics Engineer">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+  <link rel="icon" href="{% static 'assets/img/img.jpg' %}">
+  <style>
+    .projects { display: grid; gap: 1rem; }
+    .project { border:1px solid var(--border); border-radius:16px; background:var(--card); padding:1rem; }
+    .project h4 { margin:.5rem 0; }
+    .project-gallery { display: flex; gap:0.5rem; flex-wrap: wrap; margin-top:0.5rem; }
+    .project-gallery img { width: calc(33.33% - 0.33rem); border-radius:8px; object-fit:cover; }
+    @media (max-width: 768px) { .project-gallery img { width: calc(50% - 0.25rem); } }
+    @media (max-width: 480px) { .project-gallery img { width: 100%; } }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <a href="{% url 'home' %}"><img src="{% static 'assets/img/img.jpg' %}" class="avatar" alt="Avatar"></a>
+        <a href="{% url 'home' %}"><span>Binod Raj Joshi</span></a>
+      </div>
+      <div>
+        <a href="{% url 'about' %}">About</a>
+        <a href="{% url 'experience' %}">Experience</a>
+        <a href="{% url 'projects' %}" class="active">Projects</a>
+        <a href="{% url 'skills' %}">Skills</a>
+        <a href="{% url 'contact' %}">Contact</a>
+        <a href="{% url 'blogs' %}">Blogs</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="section container">
+    <h2>Projects</h2>
+    <p class="small">A collection of my work in Surveying, Land Use Planning, and personal projects.</p>
+
+    <!-- Surveying Projects -->
+    <div class="section">
+      <h3>Surveying Projects</h3>
+
+      <div class="project">
+        <h4>Topographic Survey</h4>
+        <p>Used Total Station, and GPS data to map terrain.</p>
+        <div class="project-gallery">
+          <img src="{% static 'assets/img/chure_road_survey.jpg' %}" alt="Topographic Survey 1">
+          <img src="{% static 'assets/img/cadastral_survey.jpg' %}" alt="Topographic Survey 2">
+          
+        </div>
+      </div>
+
+      <div class="project">
+        <h4>Transmission Line Survey</h4>
+        <p>Conducted line alignment surveys and mapped corridor using DGPS.</p>
+        <div class="project-gallery">
+          <img src="{% static 'assets/img/transmission_line.jpg' %}" alt="Transmission Survey 1">
+          <img src="{% static 'assets/img/transmission.jpg' %}" alt="Transmission Survey 2">
+          
+        </div>
+      </div>
+    </div>
+
+    <!-- Land Use Planning Projects -->
+    <div class="section">
+      <h3>Land Use Planning Projects</h3>
+
+      <div class="project">
+        <h4>LOcal Level Land Use Mapping</h4>
+        <p>Created parcel-level land use maps and classification using GIS and satellite imagery.</p>
+        <div class="project-gallery">
+          <img src="{% static 'assets/img/field_data_collection_sundarbazar.jpg' %}" alt="Land Use 1">
+          <img src="{% static 'assets/img/presentation_Bhageswor_RM.jpg' %}" alt="Land Use 2">
+          <img src="{% static 'assets/img/kalimati.jpg' %}" alt="Land Use 3">
+          <img src="{% static 'assets/img/kalimati1.jpg' %}" alt="Land Use 3">
+        </div>
+      </div>
+
+    <!-- Own / Personal Projects -->
+    <div class="section">
+      <h3>Personal Projects</h3>
+      <div class="project">
+        <h4>Parcel Viewer</h4>
+        <p>Built a WebGIS platform to overlay cadastral parcels and roads for spatial analysis and tax assessment.</p>
+        <div class="project-gallery">
+          <img src="{% static 'assets/img/parcel.jpg' %}" alt="WebGIS 1">
+          <img src="{% static 'assets/img/parcel1.jpg' %}" alt="WebGIS 2">
+          <img src="{% static 'assets/img/parcel2.jpg' %}" alt="WebGIS 3">
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container small">
+      © <span id="y"></span> Binod Joshi • Built with Django
+    </div>
+    <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
+  </footer>
+</body>
+</html>

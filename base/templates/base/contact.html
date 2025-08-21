@@ -1,0 +1,80 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title|default:" Binod Joshi" }}</title>
+  <meta name="description" content="Portfolio of Binod Joshi — GIS Analyst & Geomatics Engineer">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+  <link rel="icon" href="{% static 'assets/img/img.jpg' %}">
+  <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <script defer src="{% static 'assets/js/main.js' %}"></script>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <a href="{% url 'home' %}"><img src="{% static 'assets/img/img.jpg' %}" class="avatar" alt="Avatar"></a>
+        <a href="{% url 'home' %}"><span>Binod Raj Joshi</span></a>
+      </div>
+      <div>
+        <a href="{% url 'about' %}">About</a>
+        <a href="{% url 'experience' %}">Experience</a>
+        <a href="{% url 'projects' %}">Projects</a>
+        <a href="{% url 'skills' %}">Skills</a>
+        <a href="{% url 'contact' %}">Contact</a>
+        <a href="{% url 'blogs' %}">Blogs</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="section container">
+    <h2>Contact</h2>
+    <div class="card">
+      <p class="small">Want to collaborate or hire me? Reach out anytime.</p>
+      <div class="resume">
+        <a class="btn" href="mailto:binod@example.com?subject=Hello%20Binod">Email Me</a>
+        <span class="code">mailto:jbinod032@gmail.com</span>
+      </div>
+      <div class="section">
+        <h3>Contact Form</h3>
+        
+        {% if success %}
+          <p class="success-msg" style="color:green;">Thank you! Your message has been sent.</p>
+        {% endif %}
+        
+        <form class="grid" style="grid-template-columns:1fr 1fr" method="post" action="{% url 'contact' %}">
+          {% csrf_token %}
+          <input class="card" style="padding:.8rem;color: white" type="text" name="name" placeholder="Your name" required>
+          <input class="card" style="padding:.8rem;color: white" type="email" name="email" placeholder="Your email" required>
+          <textarea class="card" style="padding:.8rem;color: white;grid-column:1/-1" name="message" rows="5" placeholder="Message" required></textarea>
+          <button class="btn" type="submit">Send</button>
+        </form>
+      </div>
+    </div>
+    <div style="margin-top: 1rem; grid-column: 1 / -1; text-align: center;">
+  <a href="https://www.linkedin.com/in/binod-joshi-2b017a337/" target="_blank" style="margin: 0 10px; text-decoration: none; color: #0A66C2;">
+    LinkedIn
+  </a>
+  <a href="https://www.facebook.com/binodjoshi.joshi.9" target="_blank" style="margin: 0 10px; text-decoration: none; color: #1877F2;">
+    Facebook
+  </a>
+  <a href="https://wa.me/9779848540921" target="_blank" style="margin: 0 10px; text-decoration: none; color: #25D366;">
+    WhatsApp
+  </a>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="container small">
+      © <span id="y"></span> Binod Joshi • Built with Django
+    </div>
+    <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
+  </footer>
+</body>
+</html>

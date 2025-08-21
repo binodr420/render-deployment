@@ -1,0 +1,180 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title|default:"Binod Joshi" }}</title>
+  <meta name="description" content="Portfolio of Binod Joshi — GIS Analyst & Geomatics Engineer">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+  <link rel="icon" href="{% static 'assets/img/img.jpg' %}">
+  <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <script defer src="{% static 'assets/js/main.js' %}"></script>
+
+  <style>
+    /* Blog image styling */
+    .blog-img {
+      max-width: 80%;   /* Prevents too-wide images */
+      height: auto;     /* Keeps aspect ratio */
+      display: block;   /* Centers the image */
+      margin: 1.5rem auto; /* Spacing around images */
+      border-radius: 8px;  /* Soft rounded corners */
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Subtle shadow */
+    }
+
+    figure {
+      text-align: center;
+    }
+
+    figcaption {
+      font-size: 0.9rem;
+      color: #555;
+      margin-top: 0.5rem;
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 768px) {
+      .blog-img {
+        max-width: 100%; /* On phones, image takes full width */
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <a href="{% url 'home' %}"><img src="{% static 'assets/img/img.jpg' %}" class="avatar" alt="Avatar"></a>
+        <a href="{% url 'home' %}"><span>Binod Raj Joshi</span></a>
+      </div>
+      <div>
+        <a href="{% url 'about' %}">About</a>
+        <a href="{% url 'experience' %}">Experience</a>
+        <a href="{% url 'projects' %}">Projects</a>
+        <a href="{% url 'skills' %}">Skills</a>
+        <a href="{% url 'contact' %}">Contact</a>
+        <a href="{% url 'blogs' %}">Blogs</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="section container">
+    <a class="btn" href="{% url 'blogs' %}">← Back to Blogs</a>
+    <h2>Building a WebGIS with Django & Leaflet</h2>
+    <p class="small">Posted 2025-08-02</p>
+
+    <p>
+      When I first thought about creating a <strong>WebGIS Portal for Bijayanagar</strong>, I had a simple idea: 
+      to bring different layers of local information — schools, health facilities, roads, tourism, and even parcel-level data — 
+      into a single interactive platform. What started as an experiment soon grew into a fully functional <strong>GIS portal powered by Django and Leaflet</strong>.
+    </p>
+
+    <h3>The Idea</h3>
+    <p>
+      Bijayanagar is a growing rural municipality, and like many local governments in Nepal, 
+      it faces challenges in <em>planning, taxation, and resource allocation</em>. 
+      I wanted to create a platform that would not just show maps, but also allow people to interact with land parcels, 
+      calculate tax, and explore services like education, health, and tourism.
+    </p>
+
+    <h3>Designing the Portal</h3>
+    <p>
+      The structure of the portal was simple but powerful:
+    </p>
+    <ul>
+      <li><strong>Sidebar menu</strong> for layers (schools, health, government offices, roads, tourism).</li>
+      <li><strong>Search bar</strong> to query parcels by unique ID.</li>
+      <li><strong>Custom base maps</strong> — local tiles and ESRI World Imagery.</li>
+      <li><strong>Parcel Tax Calculator</strong> to estimate tax dynamically.</li>
+    </ul>
+
+    <!-- Homepage Screenshot -->
+    <figure>
+      <img src="{% static 'assets/img/parcel.jpg' %}" alt="WebGIS Homepage" class="blog-img">
+      <figcaption>📍 The homepage of the Bijayanagar WebGIS portal.</figcaption>
+    </figure>
+
+    <h3>Building with Django & Leaflet</h3>
+    <p>
+      The backend was built using <strong>Django</strong>, which handled routing, database queries, and APIs for spatial data. 
+      On the frontend, <strong>Leaflet.js</strong> made maps interactive and lightweight. 
+      I fetched data as GeoJSON and displayed it with popups containing parcel details, school names, and ward numbers.
+    </p>
+
+    <p>
+      A key feature was the <strong>Admin Site</strong>. 
+      It allowed administrators to manage parameters like <em>weightage, base rate, and road type values</em>, 
+      giving flexibility to update taxation logic without changing the code. 
+      This made the portal not only dynamic but also sustainable for long-term municipal use.
+    </p>
+
+    <!-- Admin Site Screenshot -->
+    <figure>
+      <img src="{% static 'assets/img/parcel1.jpg' %}" alt="Admin Site for WebGIS" class="blog-img">
+      <figcaption>⚙️ Admin panel to configure weightage, base rates, and tax parameters.</figcaption>
+    </figure>
+
+    <p>
+      One of the most interesting parts was the <em>Parcel Tax Calculator</em>. 
+      It considered parcel area, road connectivity, and road type (highway, feeder, pitched, paved, unpaved). 
+      With different weights, the calculator estimated a fair tax — bridging geospatial data with financial planning.
+    </p>
+
+    <!-- Parcel Tax Calculator Screenshot -->
+    <figure>
+      <img src="{% static 'assets/img/parcel2.jpg' %}" alt="Parcel Tax Calculator and Map" class="blog-img">
+      <figcaption>💰 Parcel Tax Calculator integrated with parcel-level mapping.</figcaption>
+    </figure>
+
+    <h3>Challenges & Learning</h3>
+    <p>
+      Building this portal wasn’t easy. I had to work through:
+    </p>
+    <ul>
+      <li>Integrating cadastral data with web maps.</li>
+      <li>Hosting custom map tiles and fitting them to exact municipal boundaries.</li>
+      <li>Ensuring that the portal runs smoothly even on limited internet connections in rural areas.</li>
+    </ul>
+    <p>
+      But these challenges taught me how to design scalable, user-friendly, and practical GIS applications.
+    </p>
+
+    <h3>The Result</h3>
+    <p>
+      The final product is a <strong>Bijayanagar GIS Portal</strong> that provides:
+    </p>
+    <ul>
+      <li>📚 <em>Education</em>: Government and private school locations.</li>
+      <li>🏥 <em>Health</em>: Hospitals and clinics.</li>
+      <li>🏛 <em>Government Offices</em>.</li>
+      <li>🛣️ <em>Road Networks</em>.</li>
+      <li>🌄 <em>Tourism Destinations and Religious Sites</em>.</li>
+      <li>💰 <em>Parcel Tax Calculator</em> for fair taxation.</li>
+    </ul>
+    <p>
+      This project not only sharpened my technical skills in <strong>GeoDjango, Leaflet, and WebGIS development</strong>, 
+      but also deepened my belief that geospatial technology can empower local governments and communities.
+    </p>
+
+    <h3>Looking Forward</h3>
+    <p>
+      This portal is just a beginning. In the future, I plan to add <em>real-time data, prediction dashboards</em> (for example, drought-prone areas), 
+      and mobile-friendly features to make it more accessible.
+    </p>
+
+    <p><strong>For me, this was not just about maps, but about making data meaningful for people. 
+    That’s the true power of WebGIS.</strong></p>
+  </main>
+
+  <footer class="footer">
+    <div class="container small">
+      © <span id="y"></span> Binod Joshi • Built with Django
+    </div>
+    <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
+  </footer>
+</body>
+</html>

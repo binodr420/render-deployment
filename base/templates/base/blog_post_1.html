@@ -1,0 +1,133 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title|default:"Binod Joshi" }}</title>
+  <meta name="description" content="Portfolio of Binod Joshi — GIS Analyst & Geomatics Engineer">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+  <link rel="icon" href="{% static 'assets/img/img.jpg' %}">
+  <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <script defer src="{% static 'assets/js/main.js' %}"></script>
+
+  <style>
+    /* Blog image styling */
+    .blog-img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 1.5rem auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    figure {
+      text-align: center;
+      margin: 2rem 0;
+    }
+    figcaption {
+      font-size: 0.9rem;
+      color: #555;
+      margin-top: 0.5rem;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <a href="{% url 'home' %}"><img src="{% static 'assets/img/img.jpg' %}" class="avatar" alt="Avatar"></a>
+        <a href="{% url 'home' %}"><span>Binod Raj Joshi</span></a>
+      </div>
+      <div>
+        <a href="{% url 'about' %}">About</a>
+        <a href="{% url 'experience' %}">Experience</a>
+        <a href="{% url 'projects' %}">Projects</a>
+        <a href="{% url 'skills' %}">Skills</a>
+        <a href="{% url 'contact' %}">Contact</a>
+        <a href="{% url 'blogs' %}">Blogs</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="section container">
+    <a class="btn" href="{% url 'blogs' %}">← Back to Blogs</a>
+    <h2>Land Use Classification and Planning of Khaptadchanna Rural Municipality</h2>
+    <p class="small">Posted 2025-06-03</p>
+
+    <p>
+      Every project begins with a simple question. For us, it was this: <em>“How is the land in Khaptadchanna Rural Municipality actually being used, and how can it be managed better for the future?”</em> 
+      As a Geomatics Engineer, I had the opportunity to dive into this challenge — blending satellite data, maps, and ground visits into a story of people, land, and planning.
+    </p>
+
+    <h3>The Beginning</h3>
+    <p>
+      Khaptadchanna RM lies in Bajhang district, nestled within the mid-hills of Nepal. The region is rich in natural beauty but also faces the pressing issues of unmanaged settlements, shrinking forests, and increasing demand for agricultural land. 
+      Our objective was clear: to classify existing land use and prepare a plan that would guide sustainable development.
+    </p>
+
+    <h3>Walking the Land</h3>
+    <p>
+      Field visits were the most memorable part of this journey. Carrying GPS devices, notebooks, and cameras, our team walked through farmlands, forests, and villages. 
+      Each conversation with locals revealed how land had changed over the years — fields converted into houses, forests cleared for grazing, and roads opening up new opportunities. 
+      These observations were not just data points, they were stories of livelihood and survival.
+    </p>
+
+    <!-- Field Visit Image -->
+    <figure>
+      <img src="{% static 'assets/img/field_data_collection_sundarbazar.jpg' %}" alt="Field Visit" class="blog-img">
+      <figcaption>🌱 Field data collection during land use survey in Khaptadchanna.</figcaption>
+    </figure>
+
+    <h3>From Pixels to Patterns</h3>
+    <p>
+      Back in the lab, satellite images and cadastral datasets became our canvas. Using supervised classification techniques in GIS, we categorized the landscape into agriculture, forest, built-up, barren land, and water bodies. 
+      The process was meticulous — training samples, accuracy assessment, and validation with ground truthing. Slowly, the patterns of land use emerged, painting a digital portrait of Khaptadchanna.
+    </p>
+
+    <!-- Land Use Map -->
+    <figure>
+      <img src="{% static 'assets/img/map.jpg' %}" alt="Land Use Map" class="blog-img">
+      <figcaption>🗺️ Land use classification map of Khaptadchanna RM.</figcaption>
+    </figure>
+
+    <h3>Findings that Matter</h3>
+    <p>
+      The results revealed that agriculture still dominates the land, but built-up areas are expanding at a rapid pace. Forest cover, though significant, shows signs of fragmentation. 
+      These findings highlighted the urgent need for planned settlements, conservation efforts, and improved land management policies.
+    </p>
+
+    <h3>Planning Ahead</h3>
+    <p>
+      Our recommendations focused on sustainable practices: zoning for settlements, conservation of forest areas, proper utilization of barren land, and protection of agricultural fields from haphazard construction. 
+      For the local government, these maps and plans are more than just documents — they are decision-making tools.
+    </p>
+
+    <!-- Presentation Image -->
+    <figure>
+      <img src="{% static 'assets/img/presentation_Bhageswor_RM.jpg' %}" alt="Presentation" class="blog-img">
+      <figcaption>📊 Presenting land use classification results to local representatives.</figcaption>
+    </figure>
+
+    <h3>Reflections</h3>
+    <p>
+      Looking back, this project was more than a technical exercise. It was a journey of connecting people with their land, understanding their struggles, and using geospatial science to create pathways for better planning. 
+      For me, it reaffirmed why I chose this field — to make maps that don’t just show locations, but tell meaningful stories.
+    </p>
+
+    <p><strong>Land use classification is not just about maps. It is about shaping the future of communities — and Khaptadchanna’s story is just one chapter in Nepal’s larger journey of sustainable development.</strong></p>
+  </main>
+
+  <footer class="footer">
+    <div class="container small">
+      © <span id="y"></span> Binod Joshi • Built with Django
+    </div>
+    <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
+  </footer>
+</body>
+</html>

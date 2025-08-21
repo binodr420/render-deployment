@@ -1,0 +1,87 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title|default:"Binod Joshi" }}</title>
+  <meta name="description" content="Portfolio of Binod Joshi — GIS Analyst & Geomatics Engineer">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+  <link rel="icon" href="{% static 'assets/img/img.jpg' %}">
+  <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <script defer src="{% static 'assets/js/main.js' %}"></script>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <a href="{% url 'home' %}"><img src="{% static 'assets/img/img.jpg' %}" class="avatar" alt="Avatar"></a>
+        <a href="{% url 'home' %}"><span>Binod Raj Joshi</span></a>
+      </div>
+      <div>
+        <a href="{% url 'about' %}">About</a>
+        <a href="{% url 'experience' %}">Experience</a>
+        <a href="{% url 'projects' %}">Projects</a>
+        <a href="{% url 'skills' %}">Skills</a>
+        <a href="{% url 'contact' %}">Contact</a>
+        <a href="{% url 'blogs' %}">Blogs</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero container">
+    <div class="grid" style="grid-template-columns: 1.1fr .9fr; align-items:center">
+      <div>
+        <div class="kicker">GIS Analyst • Geomatics Engineer • WebGIS Developer</div>
+        <h1>Hi, I’m Binod — I build geospatial apps and analyze spatial data that solve real world problems.</h1>
+        <p class="sub">Background in Geomatics Engineering with industry experience as a GIS Analyst and WebGis developer.</p>
+        <div class="badges">
+          <span class="badge">Kathmandu, Nepal</span>
+          <a class="btn" href="{% url 'projects' %}">See Projects</a>
+        </div>
+      </div>
+      <div><img src="{% static 'assets/img/img.jpg' %}" alt="Profile" style="width:90%;max-width:320px;border-radius:50px;display:block;margin:0 auto"></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section container">
+      <h2>Live Map Preview</h2>
+      <p class="small">Leaflet map showing my location .</p>
+      <div id="map"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container small">
+      © <span id="y"></span> Binod Joshi • Built with Django
+    </div>
+    <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
+  </footer>
+
+  <!-- Leaflet map script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Kathmandu coordinates
+      var kathmandu = [27.7172, 85.3240];
+
+      // Initialize the map
+      var map = L.map('map').setView(kathmandu, 13);
+
+      // Add OpenStreetMap tiles
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+      }).addTo(map);
+
+      // Add marker
+      L.marker(kathmandu).addTo(map)
+        .bindPopup("Kathmandu, Nepal")
+        .openPopup();
+    });
+  </script>
+</body>
+</html>

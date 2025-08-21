@@ -1,0 +1,36 @@
+[
+  {
+    "title": "WebGIS: Landslide Hazard Routing",
+    "year": "2025",
+    "stack": [
+      "Django",
+      "Leaflet",
+      "PostGIS",
+      "NetworkX"
+    ],
+    "summary": "Routing & nearest-facility search in hazard zones.",
+    "image": "assets/img/profile.svg"
+  },
+  {
+    "title": "Bijayanagar GIS Portal",
+    "year": "2024",
+    "stack": [
+      "Leaflet",
+      "GeoDjango",
+      "Tailwind"
+    ],
+    "summary": "Municipal web map with key public layers.",
+    "image": "assets/img/profile.svg"
+  },
+  {
+    "title": "Parcel Tax Calculator",
+    "year": "2025",
+    "stack": [
+      "JavaScript",
+      "Leaflet",
+      "Django"
+    ],
+    "summary": "Widget to compute parcel taxes by zone & distance.",
+    "image": "assets/img/profile.svg"
+  }
+]

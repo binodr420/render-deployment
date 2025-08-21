@@ -1,0 +1,89 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title|default:"Binod Joshi" }}</title>
+  <meta name="description" content="Portfolio of Binod Joshi — GIS Analyst & Geomatics Engineer">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+  <link rel="icon" href="{% static 'assets/img/img.jpg' %}">
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <a href="{% url 'home' %}"><img src="{% static 'assets/img/img.jpg' %}" class="avatar" alt="Avatar"></a>
+        <a href="{% url 'home' %}"><span>Binod Raj Joshi</span></a>
+      </div>
+      <div>
+        <a href="{% url 'about' %}" class="active">About</a>
+        <a href="{% url 'experience' %}">Experience</a>
+        <a href="{% url 'projects' %}">Projects</a>
+        <a href="{% url 'skills' %}">Skills</a>
+        <a href="{% url 'contact' %}">Contact</a>
+        <a href="{% url 'blogs' %}">Blogs</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="section container" id="about-page">
+    <h2>About Me</h2>
+    <div class="cards about-cards">
+      <div class="card">
+        <h3>Journey</h3>
+        <p class="small">
+          Born in Bajhang, grew up in Dhangadhi, Kailali, and currently living in Kathmandu. 
+          Completed B.E. in Geomatics Engineering from Western Regional College. 
+          Started career as field surveyor for land use planning and topographic surveys, then worked as GIS Analyst at Mappers Nepal Pvt. Ltd.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Focus</h3>
+        <p class="small">
+          Local governments: Resource mapping, Land use classification and planning, Surveying. 
+          Passionate about applying GIS and spatial technologies to solve real-world problems.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Skills</h3>
+        <p class="small">
+          GIS Analysis, Remote Sensing, WebGIS Development (Django + Leaflet), Spatial Data Visualization, Land Use Mapping, Topographic Surveying, Disaster Risk Assessment.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Projects</h3>
+        <p class="small">
+          - Land use & cadastral maps for local governments.<br>
+          - Disaster risk mapping for hazard-prone areas.<br>
+          - WebGIS applications for schools, roads, cadastre.<br>
+          - Topographic surveys for roads, hospitals, and complex buildings.<br>
+          - Transmission Line survey using DGPS
+        </p>
+      </div>
+      <div class="card">
+        <h3>Hobbies & Interests</h3>
+        <p class="small">
+          Trekking, reading history books, and watching movies.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Future Goals</h3>
+        <p class="small">
+          Master WebGIS, Spatial ML, and environmental GIS applications to support data-driven decisions.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container small">
+      © <span id="y"></span> Binod Joshi • Built with Django
+    </div>
+    <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
+  </footer>
+</body>
+</html>

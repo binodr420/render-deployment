@@ -1,0 +1,93 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title|default:"Binod Joshi" }}</title>
+  <meta name="description" content="Portfolio of Binod Joshi — GIS Analyst & Geomatics Engineer">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+  <link rel="icon" href="{% static 'assets/img/img.jpg' %}">
+  <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <script defer src="{% static 'assets/js/main.js' %}"></script>
+</head>
+<body>
+<nav class="nav">
+  <div class="container nav-inner">
+    <div class="brand">
+      <a href="{% url 'home' %}"><img src="{% static 'assets/img/img.jpg' %}" class="avatar" alt="Avatar"></a>
+      <a href="{% url 'home' %}"><span>Binod Raj Joshi</span></a>
+    </div>
+    <div>
+      <a href="{% url 'about' %}">About</a>
+      <a href="{% url 'experience' %}">Experience</a>
+      <a href="{% url 'projects' %}">Projects</a>
+      <a href="{% url 'skills' %}">Skills</a>
+      <a href="{% url 'contact' %}">Contact</a>
+      <a href="{% url 'blogs' %}">Blogs</a>
+    </div>
+  </div>
+</nav>
+
+<main class="section container">
+  <h2>Skills</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>GIS & Remote Sensing</h3>
+      <div class="badges">
+        <span class="badge">ArcGIS</span><span class="badge">QGIS</span><span class="badge">Leaflet</span><span class="badge">GeoDjango</span><span class="badge">PostGIS</span><span class="badge">GEE</span>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Programming</h3>
+      <div class="badges">
+        <span class="badge">Python</span><span class="badge">Django</span><span class="badge">JavaScript</span><span class="badge">SQL</span>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Data & Analysis</h3>
+      <div class="badges">
+        <span class="badge">Pandas</span><span class="badge">GeoPandas</span><span class="badge">NumPy</span><span class="badge">NetworkX</span><span class="badge">Excel</span>
+      </div>
+    </div>
+    
+    <!-- New Surveying Skill Section -->
+    <div class="card">
+      <h3>Surveying</h3>
+      <div class="badges">
+        <span class="badge">Topographic Survey</span>
+        <span class="badge">Transmission Line Survey</span>
+        <span class="badge">Drone Surveying</span>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="card">
+      <h3>Learning</h3>
+      <div class="badges">
+        <span class="badge">Machine Learning</span><span class="badge">Spatial Data Science</span><span class="badge">FME</span>
+      </div>
+    </div></br>
+  
+  <div class="section">
+    <h2>Toolbox</h2>
+    <div class="list">
+      <div class="item"><div class="badge">Version Control</div><div><strong>Git & GitHub</strong><span>PRs, branching, reviews.</span></div></div>
+      <div class="item"><div class="badge">Databases</div><div><strong>PostgreSQL/PostGIS</strong><span>Spatial indexing & tuning basics.</span></div></div>
+      <div class="item"><div class="badge">Deployment</div><div><strong>Static hosts</strong><span>Netlify, GitHub Pages, Vercel.</span></div></div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container small">
+    © <span id="y"></span> Binod Joshi • Built with Django
+  </div>
+  <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
+</footer>
+</body>
+</html>
