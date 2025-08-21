@@ -1,4 +1,0 @@
-dj-database_url==3.0.1
-Django==5.2.5
-python-decouple==3.8
-gunicorn
